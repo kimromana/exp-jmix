@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="exp">
+        <addColumn tableName="COUNTRY">
+            <column name="CODE" type="VARCHAR(5)"/>
+            <column name="GUID_1C" type="VARCHAR(100)"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="exp">
+        <addColumn tableName="ORGANIZATION">
+            <column name="COUNTRY_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="exp">
+        <createIndex indexName="IDX_ORGANIZATION_COUNTRY" tableName="ORGANIZATION">
+            <column name="COUNTRY_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="COUNTRY_ID" baseTableName="ORGANIZATION"
+                                 constraintName="FK_ORGANIZATION_ON_COUNTRY" referencedColumnNames="ID"
+                                 referencedTableName="COUNTRY"/>
+    </changeSet>
+</databaseChangeLog>

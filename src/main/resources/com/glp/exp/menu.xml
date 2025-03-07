@@ -3,6 +3,9 @@
 
     <menu id="application" title="msg://com.glp.exp/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.glp.exp.view.user/UserListView.title"/>
+        <item view="Organization.list" title="msg://com.glp.exp.view.organization/organizationListView.title"/>
+        <item view="Country.list" title="msg://com.glp.exp.view.country/countryListView.title"/>
+        <item view="WagonType.list" title="msg://com.glp.exp.view.wagontype/wagonTypeListView.title"/>
     </menu>
 
 </menu-config>
